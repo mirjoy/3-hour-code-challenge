@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131216235605) do
+ActiveRecord::Schema.define(version: 20150528170246) do
+
+  create_table "favorites", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "item_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "favorites", ["user_id", "item_id"], name: "index_favorites_on_user_id_and_item_id", unique: true
 
   create_table "items", force: true do |t|
     t.string   "name"

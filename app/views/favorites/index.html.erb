@@ -1,0 +1,16 @@
+<div class="favorites-page container">
+	<% if @favorites.count > 1 %>
+		<p>You have <%= @favorites.count %> favorites</p>
+		<div class="row">
+			<% @favorites.each do |fave| %>
+				<div class="col-sm-3">
+	      <h5><%= fave.name %></h5>
+	       <%= link_to(image_tag(fave.image_url), item_path(fave)) %>
+	      <p id="fave-id-<%= fave.id %>">
+	        <%= fave.description %>
+			<% end %>
+		</div>
+	<% else %>
+		<h4><%= link_to "Go favorite some things!", root_path %></h4>
+	<% end %>
+</div>

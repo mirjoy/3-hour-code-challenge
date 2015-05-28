@@ -8,11 +8,19 @@
   <% @items.each do |item| %>
     <div class="col-sm-3">
       <h5><%= item.name %></h5>
-      <%= link_to(image_tag(item.image_url), item_path(item)) %>
+       <%= link_to(image_tag(item.image_url), item_path(item)) %>
       <p id="item-id-<%= item.id %>">
         <%= item.description %>
         <%= button_to "Order Now", orders_path(item_id: item.id), method: :post %>
-        <%= button_to "Add to Favorites", favorites_path(item_id: item.id), method: :post %>
+        <% if item.is_a_favorite? %>
+          <div id="<%= item.id %>">
+          <%= button_to "Remove from Favorites", favorite_path(item), method: :post, remote: true, class: "favorite" %>
+          </div>
+        <% else %>
+          <div id="<%= item.id %>">
+          <%= button_to "Add to Favorites", favorites_path(item.id), method: :destroy, remote: true, class: "not-favorite" %>
+          </div>
+        <% end %>
       </p>
     </div>
   <% end %>
