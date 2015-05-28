@@ -12,6 +12,7 @@ gem 'faker'
 gem 'haml-rails'
 gem 'therubyracer'
 gem 'less-rails-bootstrap'
+gem 'rspec-rails'
 
 group :development do
   gem 'spring'
@@ -19,5 +20,6 @@ end
 
 group :development, :test do
   gem 'capybara'
+  gem 'launchy'
   gem 'pry', :require => 'pry'
 end

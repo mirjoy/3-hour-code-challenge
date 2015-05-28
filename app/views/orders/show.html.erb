@@ -1,0 +1,14 @@
+
+<% if flash[:alert] %>
+	<div class="alert"><%= flash[:alert] %></div>
+<% end %>
+
+<% @order.items.each do |item| %>
+   <div class="col-sm-3">
+      <h5><%= item.name %></h5>
+      <%= link_to(image_tag(item.image_url), item_path(item)) %>
+      <p id="item-id-<%= item.id %>">
+        <%= item.description %>
+      </p>
+    </div>
+<% end %>
