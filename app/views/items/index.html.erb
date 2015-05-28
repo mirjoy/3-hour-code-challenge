@@ -12,6 +12,7 @@
       <p id="item-id-<%= item.id %>">
         <%= item.description %>
         <%= button_to "Order Now", orders_path(item_id: item.id), method: :post %>
+        <%= button_to "Add to Favorites", favorites_path(item_id: item.id), method: :post %>
       </p>
     </div>
   <% end %>
