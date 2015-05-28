@@ -9,5 +9,6 @@ RSpec.describe "user creates order in one click", :type => :feature do
 
     expect(page).to have_content(item.name)
  		expect(page).to have_content("You have successfully ordered this item!")
+  	expect(ActionMailer::Base.deliveries.length).to eq(1)
   end
 end

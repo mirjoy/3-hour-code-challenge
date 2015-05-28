@@ -12,6 +12,7 @@ class OrdersController < ApplicationController
   	new_order = OrderItem.new(order_id: order.id, item_id: params[:item_id])
 	
 		if new_order.save
+			OrderMailer.order_confirmation(new_order).deliver
 	  	flash[:alert] = "You have successfully ordered this item!"
 	  	redirect_to order_path(order)
 	  else
